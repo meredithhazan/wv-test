@@ -9,37 +9,7 @@ import { OuterSegment, InnerSegment } from "../../components/Segment";
 
 //create component and define initial state
 export class DashPanel extends Component {
-	state = {
-    	dashboard: ["panel": 
-            {			"panelid": "100",
-                        "status": "Apply",
-                        "panelorder": 1,
-                        "results": [
-                            {
-                                "title": "CEO",
-                                "jobid": 0,
-                                "company": "Facebook",
-                                }
-                        ]
-                      },
-                    "panel": {
-                        "panelid": "200",
-                        "status": "InProgress",
-                        "panelorder": 2,
-                        "results": [
-                            {
-                                "title": "President",
-                                "jobid": 1,
-                                "company": "Google"
-                            }
-                        ]
-                    }
-                            ],
 
-    company: "",
-    title: "",
-    status: ""
-  };
 
 // show this once the component has mounted
 /*componentDidMount() {
@@ -65,14 +35,16 @@ getStatus = () => {
 
 
 };*/
-
+/*color= {job.color}*/
 render() {
 	return (
-		this.state.dashboard.length ? (
+		this.props.results.length ? (
 			<OuterSegment>
-				<strong>{this.state.panel.status}</strong>
-				{this.state.results.map(job => (
-					<InnerSegment key={job.jobid} /*style={"color:" + job.color}*/>
+				<strong>{this.props.status}</strong>
+				{this.props.results.map(job => (
+					<InnerSegment 
+                    key={job.jobid}
+                    color={this.props.color}>
 						<Link to={"/jobs/" + job.jobid}>
 							<strong>
 								{job.company}</strong> 

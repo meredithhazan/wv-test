@@ -3,5 +3,5 @@ import { Segment } from 'semantic-ui-react'
 
 export const InnerSegment = props => 
 	<Segment.Group>
-      <Segment>{props.children}</Segment>
+      <Segment {...props} />
     </Segment.Group>;

@@ -11,32 +11,78 @@ import { MainContainer
 //create component and define initial state
 class Books extends Component {
    state = {
-    dashboard:      ["panel": 
+    dashboard:      [ 
                       {
                         "panelid": "100",
                         "status": "Apply",
                         "panelorder": 1,
+                        "color": "green",
                         "results": [
                             {
                                 "title": "CEO",
                                 "jobid": 0,
                                 "company": "Facebook",
+                                },
+                            {
+                                "title": "CEO",
+                                "jobid": 1,
+                                "company": "Yahoo",
+                                },
+                            {
+                                "title": "CEO",
+                                "jobid": 2,
+                                "company": "Twitter",
                                 }
                         ]
                       },
-                    "panel": 
+                     
                     {
                         "panelid": "200",
                         "status": "InProgress",
                         "panelorder": 2,
+                        "color": "yellow",
                         "results": [
                             {
                                 "title": "President",
-                                "jobid": 1,
+                                "jobid": 10,
                                 "company": "Google"
+                            },
+                            {
+                                "title": "VP",
+                                "jobid": 11,
+                                "company": "Facebook",
+                            },
+                            {
+                                "title": "CTO",
+                                "jobid": 12,
+                                "company": "SnapChat",
                             }
                         ]
-                    }
+                    },
+                    {
+                        "panelid": "300",
+                        "status": "Closed",
+                        "panelorder": 3,
+                        "color": "red",
+                        "results": [
+                            {
+                                "title": "CEO",
+                                "jobid": 0,
+                                "company": "Facebook",
+                                },
+                            {
+                                "title": "CEO",
+                                "jobid": 1,
+                                "company": "Yahoo",
+                                },
+                            {
+                                "title": "CEO",
+                                "jobid": 2,
+                                "company": "Twitter",
+                                }
+                        ]
+                      }
+
                             ],
 
     company: "",
@@ -73,13 +119,18 @@ class Books extends Component {
         <GridContainer>
           <GridRow>
             {this.state.dashboard.length ? (
+              this.state.dashboard.map(panel => (
               <GridColumn>
-              {this.state.dashboard.map(pnl => (
-              
-                <DashPanel /*key={pnl.panel.panelid}status={pnl.panel.status} results={pnl.panel.results} panelorder={pnl.panel.order} color={pnl.panel.color}*/ />
-              
-              ))}
+
+                <DashPanel 
+                key={panel.panelid}
+                status={panel.status} 
+                results={panel.results}
+                panelorder={panel.order} 
+                color={panel.color} />
               </GridColumn>
+              ))
+              
               ) : (
               <GridColumn>
                 <h3>No Results to Display</h3>
